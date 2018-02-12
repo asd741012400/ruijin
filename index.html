@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <style type="text/css">
+    html,body{
+        height: 100%;
+    }
+    #wrap{
+        height: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-flex-flow: column;
+               flex-flow: column;
+    }
+    #header{
+        text-align: center; background-color: #fff; color: #333333;
+        width: 100%;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    #header h1{
+        font-size: 16px; height: 44px; line-height: 44px; margin: 0em; color: #333333;
+    }
+    #main{
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        -webkit-overflow-scrolling : touch;
+    }
+    /*底部导航*/
+    #footer{
+      height: 56px;
+      border-top: 1px solid #e5e5e5;
+    }
+    #footer ul{
+      overflow: hidden;
+      padding: 8px 2px 6px;
+    }
+    #footer ul li{
+      float: left;
+      width: 25%;
+      text-align: center;
+    }
+    #footer ul li.active{
+      color: #999999;
+    }
+    #footer ul li.active p{
+      color: #17509D;
+    }
+    #footer ul li p{
+      font-size: 10px;
+      margin-top: 2px;
+      color: #999999;
+    }
+    #footer ul li span{
+      width: 20px;
+      height: 20px;
+    }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <h1>四种方案</h1>
+        </div>
+        <div id="main" class="flex-con">
+
+        </div>
+        <div id="footer">
+            <ul>
+              <li class="active" id="home">
+                <span><img src="image/home_a.png" alt="" width="100%" class="home_img"></span>
+                <p>首页</p>
+              </li>
+              <li id="history">
+                <span><img src="image/history_b.png" alt="" width="100%" class="history_img"></span>
+                <p>历史记录</p>
+              </li>
+              <li id="statement">
+                <span><img src="image/statement_b.png" alt="" width="100%" class="statement_img"></span>
+                <p>免责声明</p>
+              </li>
+              <li id="abuot">
+                <span><img src="image/abuot_b.png" alt="" width="100%" class="abuot_img"></span>
+                <p>关于我们</p>
+              </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+
+        var header = $api.byId('header');
+        //适配iOS 7+，Android 4.4+状态栏
+        //$api.fixStatusBar(header);
+
+        var headerPos = $api.offset(header);
+        var main = $api.byId('main');
+        var mainPos = $api.offset(main);
+
+        var home = $api.byId('home');
+        var history = $api.byId('history');
+        var abuot = $api.byId('abuot');
+        var statement = $api.byId('statement');
+
+        var homeImg = $api.dom('.home_img');
+        var historyImg = $api.dom('.history_img');
+        var statementImg = $api.dom('.statement_img');
+        var abuotImg = $api.dom('.abuot_img');
+
+
+        function closeM(){
+          api.closeFrame({
+            name: 'drug1',
+            name: 'drug2',
+            name: 'drug3',
+            name: 'drug4',
+          });
+        }
+        api.openFrame({
+            name: 'index',
+            url: 'html/index.html',
+            bounces: false,
+            pageParam: {
+            	y: headerPos.h,
+            	h: mainPos.h
+            },
+            rect: {
+                x: 0,
+                y: headerPos.h,
+                w: 'auto',
+                h: mainPos.h
+            }
+        });
+
+
+        $api.addEvt(home, 'click', function(){
+          $api.text( $api.dom(header , 'h1'), '四种方案');
+
+          $api.addCls(home, 'active');
+          $api.removeCls(history, 'active');
+          $api.removeCls(abuot, 'active');
+          $api.removeCls(statement, 'active');
+
+          $api.attr(homeImg,'src','image/home_a.png');
+          $api.attr(historyImg,'src','image/history_b.png');
+          $api.attr(statementImg,'src','image/statement_b.png');
+          $api.attr(abuotImg,'src','image/abuot_b.png');
+
+          closeM()
+
+
+
+          api.openFrame({
+              name: 'index',
+              url: 'html/index.html',
+              bounces: false,
+              rect: {
+                  x: 0,
+                  y: headerPos.h,
+                  w: 'auto',
+                  h: mainPos.h
+              }
+          })
+        });
+
+        $api.addEvt(history, 'click', function(){
+          $api.text( $api.dom(header , 'h1'), '历史记录');
+
+          closeM()
+          $api.removeCls(home, 'active');
+          $api.addCls(history, 'active');
+          $api.removeCls(abuot, 'active');
+          $api.removeCls(statement, 'active');
+
+          $api.attr(homeImg,'src','image/home_b.png');
+          $api.attr(historyImg,'src','image/history_a.png');
+          $api.attr(statementImg,'src','image/statement_b.png');
+          $api.attr(abuotImg,'src','image/abuot_b.png');
+
+          api.openFrame({
+              name: 'result',
+              url: 'html/result.html',
+              bounces: false,
+              reload: true,
+              pageParam : {
+              },
+              rect: {
+                  x: 0,
+                  y: headerPos.h,
+                  w: 'auto',
+                  h: mainPos.h
+              }
+          });
+        });
+
+
+        $api.addEvt(statement, 'click', function(){
+          closeM()
+          $api.text( $api.dom(header , 'h1'), '免责声明');
+
+          $api.removeCls(home, 'active');
+          $api.removeCls(history, 'active');
+          $api.removeCls(abuot, 'active');
+          $api.addCls(statement, 'active');
+
+          $api.attr(homeImg,'src','image/home_b.png');
+          $api.attr(historyImg,'src','image/history_b.png');
+          $api.attr(statementImg,'src','image/statement_a.png');
+          $api.attr(abuotImg,'src','image/abuot_b.png');
+          api.openFrame({
+              name: 'statement',
+              url: 'html/statement.html',
+              bounces: false,
+              rect: {
+                  x: 0,
+                  y: headerPos.h,
+                  w: 'auto',
+                  h: mainPos.h
+              }
+          })
+        });
+
+
+        $api.addEvt(abuot, 'click', function(){
+
+          $api.text( $api.dom(header , 'h1'), '关于我们');
+          closeM()
+          $api.removeCls(home, 'active');
+          $api.removeCls(history, 'active');
+          $api.addCls(abuot, 'active');
+          $api.removeCls(statement, 'active');
+
+
+          $api.attr(homeImg,'src','image/home_b.png');
+          $api.attr(historyImg,'src','image/history_b.png');
+          $api.attr(statementImg,'src','image/statement_b.png');
+          $api.attr(abuotImg,'src','image/abuot_a.png');
+          api.openFrame({
+              name: 'abuot',
+              url: 'html/abuot.html',
+              bounces: false,
+              rect: {
+                  x: 0,
+                  y: headerPos.h,
+                  w: 'auto',
+                  h: mainPos.h
+              }
+          })
+
+        });
+
+    };
+
+
+
+</script>
+</html>

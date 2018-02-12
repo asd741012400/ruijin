@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" class="back">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>骁悉（MMF）+他克莫司（FK506）</title>
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" href="../css/api.css" />
+	<script src="../script/api.js"></script>
+	<script src="../script/jquery.js"></script>
+</head>
+
+<style type="text/css">
+
+header{
+	text-align: center;
+	font-size: 16px;
+	color: #333333;
+	line-height: 44px;
+	background: #fff;
+	border-bottom: 1px solid #e5e5e5;
+	position: fixed;;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 9999999;
+}
+header span{
+	position: absolute;
+	width: 40px;
+	height: 100%;
+	left: 0;
+}
+header span img{
+	width: 9px;
+	height: 16px;
+	margin-top: 14px;
+	margin-left: 12px;
+}
+
+</style>
+
+<body class="back">
+<header><span id="return_span"><img src="../image/return.png" alt=""></span>骁悉（MMF）+他克莫司（FK506）</header>
+
+<div class="main" style="padding-top:50px; padding-bottom:66px;	background: #f2f2f2;">
+	<div class="count">
+		<div>
+			<ul>
+				<li>
+					<h1>
+						<span>服药后0.5小时<em>C<sub>0.5</sub></em></span>
+						<b></b>
+					</h1>
+				</li>
+				<li>
+					<p>
+						<input type="number" class="getVal">
+						<span class="fr">mg/L</span>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<ul>
+				<li>
+					<h1>
+						<span>服药后2小时<em>C<sub>2</sub></em></span>
+						<b></b>
+					</h1>
+				</li>
+				<li>
+					<p>
+						<input type="number" class="getVal">
+						<span class="fr">mg/L</span>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<ul>
+				<li>
+					<h1>
+						<span>服药后4小时<em>C<sub>4</sub></em></span>
+						<b></b>
+					</h1>
+				</li>
+				<li>
+					<p>
+						<input type="number" class="getVal">
+						<span class="fr">mg/L</span>
+					</p>
+				</li>
+			</ul>
+		</div>
+
+		<div class="maT">
+			<ul>
+				<li>
+					<h1>
+						<span>MPA AUC值</span>
+						<b></b>
+					</h1>
+				</li>
+				<li>
+					<p>
+						<b class="setVal"></b>
+						<span class="fr">mg·h/L</span>
+					</p>
+					<strong><em>计算</em></strong>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!--<div id="footer">
+	<ul>
+		<li class="active">
+			<span><img src="../image/home_a.png" alt=""></span>
+			<p>首页</p>
+		</li>
+		<li>
+			<span><img src="../image/history_b.png" alt=""></span>
+			<p>历史记录</p>
+		</li>
+		<li>
+			<span><img src="../image/statement_b.png" alt=""></span>
+			<p>免责声明</p>
+		</li>
+		<li>
+			<span><img src="../image/abuot_b.png" alt=""></span>
+			<p>关于我们</p>
+		</li>
+	</ul>
+</div>-->
+
+<script src="../script/changeBjc.js"></script>
+<script>
+var returnSpan = $api.dom('#return_span');
+	$api.addEvt(returnSpan, 'click', function(){
+		api.closeWin({
+		    name: api.frameName
+		});
+	});
+
+
+
+	$('strong').click(function(){
+
+		$.ajax({
+			url: 'http://ruijinadmin.qw1000.cn/Home/Drug/calculate',
+			type : "post",
+			data : {
+				c_fixid : api.deviceId,
+				c_groupid :	api.pageParam.name,
+				c_p1 : $('.getVal').eq(0).val(),
+				c_p2 : $('.getVal').eq(1).val(),
+				c_p3 : $('.getVal').eq(2).val(),
+			},
+			success : function( data ){
+				$('.setVal').text( data.data )
+			},
+			error : function(){
+				alert(2222)
+			}
+		})
+
+	})
+</script>
+</body>
+</html>

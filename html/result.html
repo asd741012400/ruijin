@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>历史记录</title>
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/result.css">
+	<script src="../script/api.js"></script>
+</head>
+<body class="back">
+<div class="main">
+
+
+
+</div>
+<script type="text/javascript">
+apiready = function(){
+
+	historyAjax();
+
+	function historyAjax(){
+		api.ajax({
+              url: 'http://ruijinadmin.qw1000.cn/Home/Drug/history',
+              method: 'get',
+              data: {
+                  values: {
+                      c_fixid: api.deviceId
+                  }
+              }
+          }, function(ret, err) {
+              if (ret) {
+
+                //var iData = JSON.parse( { msg: JSON.stringify(ret) } );
+                  var html = '';
+									if(ret.data == "没有历史记录哦")
+									{
+										$api.append($api.dom('.main'), "没有历史记录哦");
+									}
+									else{
+										for(var i in ret.data){
+											html += '<div>'+
+													'<h1 class="ov">'+
+														'<span class="fl">'+ ret.data[i].c_tit+'</span>'+
+														'<b class="fr">'+ ret.data[i].c_create_time +'</b>'+
+													'</h1>'+
+													'<p>'+ ret.data[i].c_des +'</p>'+
+													'<div class="ov">'+
+														'<span class="fl">录入:'+
+															'<i>'+ ret.data[i].c_p1 +'mg/L</i>'+
+															'<i>'+ ret.data[i].c_p2 +'mg/L</i>'+
+															'<i>'+ ret.data[i].c_p3 +'mg/L</i>'+
+														'</span>'+
+														'<strong class="fr"><em>'+ ret.data[i].c_val +'</em>mg·h/L</strong>'+
+													'</div>'+
+												'</div>';
+										}
+										$api.append($api.dom('.main'), html);
+									}
+              } else {
+                  api.alert({ msg: JSON.stringify(err) });
+              }
+          })
+	}
+}
+
+/**
+$.ajax({
+	url: 'http://ruijinadmin.qw1000.cn/Home/Drug/history',
+	type : "get",
+	data : {
+		c_fixid : api.deviceId
+	},
+	success : function( data ){
+		alert(5555)
+		for(var i in data.data)
+		{
+		$('.main').append('<div>'+
+					'<h1 class="ov">'+
+						'<span class="fl">'+ data.data[i].c_tit+'</span>'+
+						'<b class="fr">'+ data.data[i].c_create_time +'</b>'+
+					'</h1>'+
+					'<p>'+ data.data[i].c_des +'</p>'+
+					'<div class="ov">'+
+						'<span class="fl">录入:'+
+							'<i>'+ data.data[i].c_p1 +'mg/L</i>'+
+							'<i>'+ data.data[i].c_p2 +'mg/L</i>'+
+							'<i>'+ data.data[i].c_p3 +'mg/L</i>'+
+						'</span>'+
+						'<strong class="fr"><em>'+ data.data[i].c_tit +'</em>mg·h/L</strong>'+
+					'</div>'+
+				'</div>')
+		}
+	},
+	error : function(){
+		alert(2222)
+	}
+})
+*/
+</script>
+
+</body>
+</html>

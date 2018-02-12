@@ -1,0 +1,180 @@
+*{
+	margin: 0 auto;
+	padding: 0;
+}
+.back{
+	background: #f2f2f2;
+}
+ul,ol{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+img{
+	float: left;
+	border: 0;
+	width: 100%;
+}
+i,em{
+	font-style: normal;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.ov{
+	overflow: hidden;
+}
+.highlight{
+	-webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+/*main*/
+
+/*头部声明*/
+header{
+	text-align: center;
+	font-size: 16px;
+	color: #333333;
+	line-height: 44px;
+	height: 44px;
+	background: #fff;
+	border-bottom: 1px solid #e5e5e5;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+header span{
+	position: absolute;
+	width: 40px;
+	height: 100%;
+	left: 0;
+}
+header span img{
+	width: 9px;
+	height: 16px;
+	margin-top: 14px;
+	margin-left: 12px;
+}
+
+
+
+
+
+/*计算页面*/
+.count{
+	background: #fff;
+	margin: 10px 12px 0;
+	border-radius: 5px;
+	padding: 28px 20px;
+}
+.count div{
+	margin-bottom: 25px;
+}
+.count div.maT{
+	margin-top: 60px;
+	margin-bottom: 0;
+}
+.count div.ma{
+	margin-bottom: 0;
+}
+.count div ul li h1{
+	font-size: 14px;
+	font-weight: 500;
+	color: #333333;
+	position: relative;
+	line-height: 20px;
+	overflow: hidden;
+
+}
+.count div ul li h1 span{
+	background: url('../image/alarm_b.png') left center/15px 15px no-repeat;
+	padding-left: 20px;
+	float: left;
+	position: relative;
+}
+.count div:nth-of-type(2) ul li h1 span em{
+	right: -20px;
+}
+.count div:nth-of-type(1) ul li h1 span em{
+	right: -29px;
+}
+.count div:nth-of-type(3) ul li h1 span em{
+	right: -20px;
+}
+.count div ul li h1 span em{
+	position: absolute;
+}
+.count div ul li h1 b{
+	position: absolute;
+	width: 100px;
+	height: 1px;
+	background: #17509d;
+	right: 0;
+	top: 10px;
+}
+
+.count div ul li p{
+	line-height: 44px;
+	width: 100%;
+	border-radius: 5px;
+	background: #f2f2f2;
+	font-size: 13px;
+	border: 1px solid #f2f2f2;
+	margin-top: 13px;
+	overflow: hidden;
+}
+.count div ul li p span{
+	padding-right: 5px;
+	color: #666666;
+}
+.count div ul li p input{
+	line-height: 44px;
+	border: none;
+	margin-left: 10px;
+	outline: medium;
+	background: none;
+	float: left;
+	width: 200px;
+	-webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+
+.count div:last-child ul li h1 b{
+	width: 140px;
+}
+.count div:last-child ul li:last-child{
+	margin-top: 18px;
+	overflow: hidden;
+}
+.count div:last-child ul li p{
+	width: 60%;
+	float: left;
+	margin-top: 0;
+	height: 44px;
+}
+.count div:last-child ul li p b{
+	width: 82px;
+	line-height: 44px;
+	height: 44px;
+	border: none;
+	margin-left: 10px;
+	float: left;
+	-webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+.count div:last-child ul li strong{
+	font-size: 14px;
+	color: #fff;
+	background: #17509d;
+	border-radius: 5px;
+	width: 36%;
+	line-height: 44px;
+	float: right;
+	text-align: center;
+}
+.count div:last-child ul li strong em{
+	background: url('../image/count.png') left/ 15px 15px no-repeat;
+	padding-left: 20px;
+	font-weight: 500;
+}

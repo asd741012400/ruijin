@@ -1,0 +1,11 @@
+.main{
+	background: #fff;
+	font-size: 14px;
+	color: #666666;
+	border-radius: 5px;
+	padding: 20px 11px 9px;
+	margin: 10px 12px 0;
+}
+.main p{
+	padding-bottom: 13px;
+}

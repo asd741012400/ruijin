@@ -1,0 +1,14 @@
+.main{
+	background: #fff;
+	padding-bottom: 23px;
+	margin-bottom: 30px;
+}
+.main .banner{
+	padding-bottom: 15px;
+}
+.main p{
+	font-size: 14px;
+	color: #666666;
+	padding: 0 13px;
+	line-height: 20px;
+}

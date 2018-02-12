@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>首页</title>
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/index.css">
+	<script type="text/javascript" src="../script/api.js"></script>
+</head>
+<body class="back">
+
+<div class="main">
+	<div id="drug_1" class="drug" data-drug="mmf_csa" data-head="骁悉（MMF）+环孢素（CsA）" data-num='1'>
+		<h1>MMF+CsA</h1>
+		<em></em>
+		<h2>骁悉（MMF）+环孢素（CsA）</h2>
+		<p><span><i>3</i>个采样点</span></p>
+	</div>
+	<div id="drug_2" class="drug" data-drug="mmf_fk506" data-head="骁悉（MMF）+他克莫司（FK506）" data-num='2'>
+		<h1>MMF+FK506</h1>
+		<em></em>
+		<h2>骁悉（MMF）+他克莫司（FK506）</h2>
+		<p><span><i>3</i>个采样点</span></p>
+	</div>
+	<div id="drug_3" class="drug" data-drug="mps_csa" data-head="米芙（EC-MPS）+环孢素（CsA）" data-num='3'>
+		<h1>EC-MPS+CsA</h1>
+		<em></em>
+		<h2>米芙（EC-MPS）+环孢素（CsA）</h2>
+		<p><span><i>4</i>个采样点</span></p>
+	</div>
+	<div id="drug_4" class="drug" data-drug="mps_fk506" data-head="米芙（EC-MPS）+他克莫司（FK506）" data-num='4'>
+		<h1>EC-MPS+FK506</h1>
+		<em></em>
+		<h2>米芙（EC-MPS）+他克莫司（FK506）</h2>
+		<p><span><i>4</i>个采样点</span></p>
+	</div>
+
+</div>
+<script>
+apiready = function(){
+	var drug_1 = $api.byId('drug_1');
+	var drug_2 = $api.byId('drug_2');
+	var drug_3 = $api.byId('drug_3');
+	var drug_4 = $api.byId('drug_4');
+
+	var y1 = api.pageParam.y;
+	var h1 = api.pageParam.h + 44;
+
+	var div1 = $api.domAll('.drug');
+
+	for(var i = 0; i < div1.length; i++){
+
+		$api.addEvt(div1[i], 'click', function(){
+
+				var dataDrug = $api.attr(this, 'data-drug');
+				var num = $api.attr(this, 'data-num')
+				api.openWin({
+				    name: 'drug'+i,
+				    url: './'+ dataDrug +'.html',
+				    pageParam: {
+				        name: num
+				    },
+				    rect: {
+		                x: 0,
+		                y: 0,
+		                w: 'auto',
+		                h: h1
+		            }
+				});
+		});
+	}
+
+//	$api.addEvt(drug_1, 'click', function(){
+//		api.openWin({
+//		    name: 'drug_1',
+//		    url: './mmf_csa.html',
+//		    pageParam: {
+//		        name: '1'
+//		    }
+//		});
+//	});
+//	$api.addEvt(drug_2, 'click', function(){
+//
+//		api.openWin({
+//		    name: 'drug_2',
+//		    url: './mmf_fk506.html',
+//		    pageParam: {
+//		        name: '2'
+//		    }
+//		});
+//	});
+//
+//	$api.addEvt(drug_3, 'click', function(){
+//		api.openWin({
+//			name: 'drug_3',
+//			url: './mps_csa.html',
+//			pageParam: {
+//				name: '3'
+//			}
+//		});
+//	});
+//
+//	$api.addEvt(drug_4, 'click', function(){
+//
+//		api.openWin({
+//				name: 'drug_4',
+//				url: './mps_fk506.html',
+//				pageParam: {
+//					name: '4'
+//				}
+//		});
+//	});
+}
+</script>
+
+</body>
+</html>
